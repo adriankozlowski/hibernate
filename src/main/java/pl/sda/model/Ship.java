@@ -3,6 +3,7 @@ package pl.sda.model;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 public class Ship {
@@ -31,6 +32,19 @@ public class Ship {
 
     @Column
     private Integer velocity;
+
+    @OneToMany(mappedBy = "ship"
+            , cascade = CascadeType.ALL
+            , fetch = FetchType.EAGER)
+    private Set<Cabin> cabins;
+
+    public Set<Cabin> getCabins() {
+        return cabins;
+    }
+
+    public void setCabins(Set<Cabin> cabins) {
+        this.cabins = cabins;
+    }
 
     public Long getId() {
         return id;

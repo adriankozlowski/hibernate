@@ -22,6 +22,7 @@ public class Main {
         Transaction tx = session.beginTransaction();
         Random random = new Random();
         Ship ship = new Ship();
+        ship.setCabins(new HashSet<>());
         ship.setCountOfMast(random.nextInt(10));
         ship.setLength(random.nextInt(3)*100);
         ship.setName("NaPohybel");
@@ -36,7 +37,7 @@ public class Main {
             cabin.setLuxuryClass(random.nextInt(3));
             cabin.setNumber(i);
             cabin.setShip(ship);
-            session.save(cabin);
+            ship.getCabins().add(cabin);
         }
         session.save(ship);
         tx.commit();
