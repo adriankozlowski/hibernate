@@ -9,33 +9,56 @@ public class Cabin {
     @Id
     private Long id;
 
+    @Column
+    private Integer number;
+
+    @Column
+    private Integer capacity;
+
+    @Column(name = "class")
+    private Integer luxuryClass;
+
+    @ManyToOne
+    @JoinColumn(name = "ship_id")
+    private Ship ship;
+
     public Long getId() {
         return id;
+    }
+
+    public Ship getShip() {
+        return ship;
+    }
+
+    public void setShip(Ship ship) {
+        this.ship = ship;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    @ManyToOne(optional = false)
-    private Ship cabin;
-
-    public Ship getCabin() {
-        return cabin;
+    public Integer getNumber() {
+        return number;
     }
 
-    public void setCabin(Ship cabin) {
-        this.cabin = cabin;
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "cabins")
-    private Collection<Reservation> Reservations;
-
-    public Collection<Reservation> getReservations() {
-        return Reservations;
+    public Integer getCapacity() {
+        return capacity;
     }
 
-    public void setReservations(Collection<Reservation> reservations) {
-        Reservations = reservations;
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
+    }
+
+    public Integer getLuxuryClass() {
+        return luxuryClass;
+    }
+
+    public void setLuxuryClass(Integer luxuryClass) {
+        this.luxuryClass = luxuryClass;
     }
 }

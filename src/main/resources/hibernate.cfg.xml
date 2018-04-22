@@ -4,20 +4,15 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://192.168.99.100:3306/hibenrate</property>
+        <property name="connection.url">jdbc:mysql://192.168.99.100:3306/hibenrate?serverTimezone=CET</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.username">root</property>
         <property name="connection.password">password</property>
         <!-- DB schema will be updated if needed -->
         <property name="hbm2ddl.auto">update</property>
         <!--<property name="connection.autocommit">true</property>-->
-        <property name="hibernate.show_sql">true</property>
         <property name="show_sql">true</property>
-        <mapping class="pl.sda.model.Cabin"/>
-        <mapping class="pl.sda.model.Cruise"/>
-        <mapping class="pl.sda.model.Customer"/>
-        <mapping class="pl.sda.model.Reservation"/>
         <mapping class="pl.sda.model.Ship"/>
-
+        <mapping class="pl.sda.model.Cabin"/>
     </session-factory>
 </hibernate-configuration>

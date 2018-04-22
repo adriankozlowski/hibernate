@@ -2,12 +2,35 @@ package pl.sda.model;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Date;
 
 @Entity
 public class Ship {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
+
+    @Column
+    private String name;
+
+    @Column(name = "production_year")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date productionYear;
+
+    @Column
+    private Integer countOfMast;
+
+    @Column
+    private Integer power;
+
+    @Column
+    private Integer length;
+
+    @Column
+    private Integer weigth;
+
+    @Column
+    private Integer velocity;
 
     public Long getId() {
         return id;
@@ -17,25 +40,59 @@ public class Ship {
         this.id = id;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "cabin")
-    private Collection<Cabin> cabins;
-
-    public Collection<Cabin> getCabins() {
-        return cabins;
+    public String getName() {
+        return name;
     }
 
-    public void setCabins(Collection<Cabin> cabins) {
-        this.cabins = cabins;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "ships")
-    private Collection<Cruise> cruises;
-
-    public Collection<Cruise> getCruises() {
-        return cruises;
+    public Date getProductionYear() {
+        return productionYear;
     }
 
-    public void setCruises(Collection<Cruise> cruises) {
-        this.cruises = cruises;
+    public void setProductionYear(Date productionYear) {
+        this.productionYear = productionYear;
+    }
+
+    public Integer getCountOfMast() {
+        return countOfMast;
+    }
+
+    public void setCountOfMast(Integer countOfMast) {
+        this.countOfMast = countOfMast;
+    }
+
+    public Integer getPower() {
+        return power;
+    }
+
+    public void setPower(Integer power) {
+        this.power = power;
+    }
+
+    public Integer getLength() {
+        return length;
+    }
+
+    public void setLength(Integer length) {
+        this.length = length;
+    }
+
+    public Integer getWeigth() {
+        return weigth;
+    }
+
+    public void setWeigth(Integer weigth) {
+        this.weigth = weigth;
+    }
+
+    public Integer getVelocity() {
+        return velocity;
+    }
+
+    public void setVelocity(Integer velocity) {
+        this.velocity = velocity;
     }
 }
